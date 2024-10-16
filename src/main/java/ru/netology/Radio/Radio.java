@@ -1,83 +1,128 @@
 package ru.netology.Radio;
 
 public class Radio {
-    private int currentNumber;
-    private int currentVolume;
+    private int MaxNumber = 9;
+    private int MinNumber = 0;
+    private int currentNumber = MinNumber;
+    private int MaxVolume = 100;
+    private int MinVolume = 0;
+    private int currentVolume = MinVolume;
+
+    public Radio (int MaxNumber, int MinNumber, int MaxVolume, int MinVolume){
+        this.MaxNumber = MaxNumber ;
+        this.MinNumber = MinNumber ;
+        this.currentNumber = MinNumber;
+
+        this.MaxVolume = MaxVolume;
+        this.MinVolume = MinVolume;
+        this.currentVolume = MinVolume;
+
+    }
+    public Radio (int size){
+        MaxVolume = MinVolume + size;
+        MaxNumber = MinNumber + size;
+
+
+    }
+
+    public Radio() {
+
+    }
+
 
     public int getCurrentNumber() {
         return currentNumber;
     }
 
+    public int getMaxNumber(){
+        return MaxNumber;
+    }
+
+    public int getMinNumber(){
+        return MinNumber;
+    }
+
     public void setCurrentNumber(int newCurrentNumber) {
-        if (newCurrentNumber < 0) {
+        if (newCurrentNumber < MinNumber) {
             return;
         }
-        if (newCurrentNumber > 9) {
+        if (newCurrentNumber > MaxNumber) {
             return;
         }
         currentNumber = newCurrentNumber;
     }
 
     public void setMinNumber() {
-        currentNumber = 0;
+
+        currentNumber = MinNumber;
     }
 
     public void setMaxNumber() {
-        currentNumber = 9;
+
+        currentNumber = MaxNumber;
     }
 
     public void next() {
-        if (currentNumber != 9) {
+        if (currentNumber != MaxNumber) {
             currentNumber++;
         } else {
-            currentNumber = 0;
+            currentNumber = MinNumber;
         }
     }
 
     public void prev() {
-        if (currentNumber != 0) {
+        if (currentNumber != MinNumber) {
             currentNumber--;
         } else {
-            currentNumber = 9;
+            currentNumber = MaxNumber;
         }
     }
+
 
 
     public int getCurrentVolume() {
         return currentVolume;
     }
 
+    public int getMaxVolume() {
+        return MaxVolume;
+    }
+
+    public int getMinVolume(){
+        return MinVolume;
+    }
+
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < MinVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume > MaxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void setMinVolume() {
-        currentVolume = 0;
+        currentVolume = MinVolume;
     }
 
     public void setMaxVolume() {
-        currentVolume = 100;
+        currentVolume = MaxVolume;
     }
 
     public void AddVolume() {
-        if (currentVolume < 100) {
+        if (currentVolume < MaxVolume) {
             currentVolume = currentVolume +1;
         } else {
-            currentVolume = 100;
+            currentVolume = MaxVolume;
         }
     }
 
     public void ReduceVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > MinVolume) {
             currentVolume--;
         } else {
-            currentVolume = 0;
+            currentVolume = MinVolume;
         }
     }
 }
