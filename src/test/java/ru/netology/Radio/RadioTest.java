@@ -3,10 +3,16 @@ package ru.netology.Radio;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.*;
 
+public class RadioTest {
 
-class RadioTest {
-
+    @Test
+    public void shouldUnderMinNumberAndMinVolume() {
+        Radio radio = new Radio(-1);
+        Assertions.assertEquals(0, radio.getCurrentNumber());
+        Assertions.assertEquals(0, radio.getCurrentVolume());
+    }
 
     @Test
     public void shouldUnderMinNumber() {
@@ -281,3 +287,14 @@ class RadioTest {
         Assertions.assertEquals(expected, actual);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
